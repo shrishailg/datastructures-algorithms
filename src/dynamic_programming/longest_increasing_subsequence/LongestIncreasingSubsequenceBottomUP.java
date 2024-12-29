@@ -11,18 +11,15 @@ public class LongestIncreasingSubsequenceBottomUP {
 
         Arrays.fill(lis, 1);
 
+        int max = -1;
+
         for (int i = 1; i < n; i++) {
             for (int j = 0; j < i; j++) {
                 if (arr[j] < arr[i] && lis[i] < lis[j] + 1) {
                     lis[i] = 1 + lis[j];
+                    max = Math.max(max, lis[i]);
                 }
             }
-        }
-
-        int max = -1;
-
-        for (var val : lis) {
-            max = Math.max(max, val);
         }
 
         return max;

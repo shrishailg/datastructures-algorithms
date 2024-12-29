@@ -5,12 +5,15 @@ import java.util.List;
 public class Test1 {
 
     public static  void main(String... args) {
-        String str = "abdcxycd0";
+//        String str = "abdcxycd0";
+//
+//        String str2 = swap(str, 0, str.length()-2);
+//       int n = str2.indexOf('0');
+//        System.out.println(str2);
+//        System.out.println(n);
 
-        String str2 = swap(str, 0, str.length()-2);
-       int n = str2.indexOf('0');
-        System.out.println(str2);
-        System.out.println(n);
+        Integer accountId = 1;
+       System.out.println("A" + String.format("%03d", accountId));
     }
 
     static String swap(String s, int x, int y) {

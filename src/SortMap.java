@@ -18,6 +18,10 @@ public class SortMap {
 //
 //        setsList.add(new ArrayList<>());
 
+        String[] strings = {"ab", "cdsa", "a", "nd"};
 
+        Arrays.sort(strings, (a,b) -> a.length() - b.length());
+
+        System.out.println(Arrays.toString(strings));
     }
 }

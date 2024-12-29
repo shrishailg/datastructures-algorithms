@@ -75,6 +75,4 @@ public class Defuse_the_Bomb_1652 {
         return result;
 
     }
-
-
 }
