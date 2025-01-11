@@ -39,9 +39,9 @@ public class MatrixChainMultiplication {
 
         int[][] dp = new int[n][n];
 
-        for (int i=0;i<n;i++) {
-            Arrays.fill(dp[i], -1);
-        }
+//        for (int i=0;i<n;i++) {
+//            Arrays.fill(dp[i], -1);
+//        }
 
         // Initialize the diagonal with 0
         for (int i = 1; i < n; i++) {
@@ -50,13 +50,18 @@ public class MatrixChainMultiplication {
 
         for (int i=1;i<n;i++) {
             for (int j=n-1;j>=0;j--) {
-                int cost = Integer.MAX_VALUE;
 
-                for(int k=i;k<j;k++) {
-                    int temp = dp[i][k] + dp[k+1][j] + (arr[i-1] * arr[k] * arr[j]);
-                    cost = Math.min(cost, temp);
+                if (i>=j) {
+                    dp[i][j] = 0;
+                } else {
+                    int cost = Integer.MAX_VALUE;
+
+                    for(int k=i;k<j;k++) {
+                        int temp = dp[i][k] + dp[k+1][j] + (arr[i-1] * arr[k] * arr[j]);
+                        cost = Math.min(cost, temp);
+                    }
+                    dp[i][j] = cost;
                 }
-                dp[i][j] = cost;
             }
         }
 
@@ -76,7 +81,7 @@ public class MatrixChainMultiplication {
 //        }
 
         // The result is stored in dp[1][N-1]
-        System.out.println(dp[n-1][1]);
-        return dp[1][n-1];
+        System.out.println(dp[n-1][0]);
+        return dp[0][n-1];
     }
 }

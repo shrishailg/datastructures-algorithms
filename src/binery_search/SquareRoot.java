@@ -17,7 +17,7 @@ public class SquareRoot {
 
             if(mid_squared == x) {
                 return mid;
-            } else  if(mid_squared< x) {
+            } else  if(mid_squared < x) {
                 low = mid+1;
             } else {
                 high = mid-1;
