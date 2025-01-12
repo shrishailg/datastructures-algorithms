@@ -1,8 +1,6 @@
 package stack;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class AsteroidCollision {
     public static void main(String... args) {
@@ -10,29 +8,47 @@ public class AsteroidCollision {
         int[] arr2 = new int[]{8,-8};
         int[] arr3 = new int[]{10,2,-5};
 
-        System.out.println((asteroidCollision(arr1)));
-        System.out.println((asteroidCollision(arr2)));
-        System.out.println((asteroidCollision(arr3)));
+        System.out.println((Arrays.toString(asteroidCollision(arr1))));
+        System.out.println((Arrays.toString(asteroidCollision(arr2))));
+        System.out.println((Arrays.toString(asteroidCollision(arr3))));
     }
 
-    public static List<Integer> asteroidCollision(int[] asteroids) {
-        int n = asteroids.length;
-        List<Integer> result = new ArrayList<>();
+    public static int[] asteroidCollision(int[] asteroids) {
+        Stack<Integer> stack = new Stack<>();
 
-        for(int i=n-2;i>=0;i--) {
-            if(asteroids[i] < 0 && asteroids[i+1] < 0) {
-                result.add(asteroids[i]);;
-            } else if(asteroids[i] > 0 && asteroids[i+1] > 0) {
-                result.add(asteroids[i]);
-            } else {
-                if(Math.abs(asteroids[i]) > Math.abs(asteroids[i+1])) {
-                    result.add(asteroids[i]);
+        for (int asteroid : asteroids) {
+            boolean isCollision = false;
+            while (!stack.isEmpty() && (stack.peek() > 0 && asteroid < 0)) {
+                if (stack.peek() == Math.abs(asteroid)) {
+                    isCollision = true;
+                    stack.pop();
+                    break;
+                } else if (stack.peek() > Math.abs(asteroid)) {
+                    isCollision = true;
+                    break;
+                } else {
+                    stack.pop();
                 }
+            }
+
+            if (!isCollision) {
+                stack.push(asteroid);
             }
         }
 
-        Collections.reverse(result);
-        return result;
+        List<Integer> result1 = new ArrayList<>();
 
+        while (!stack.isEmpty()) {
+            result1.add(stack.pop());
+        }
+
+        Collections.reverse(result1);
+
+        int[] result = new int[result1.size()];
+        for (int i = 0; i < result1.size(); i++) {
+            result[i] = result1.get(i);
+        }
+
+        return result;
     }
 }
