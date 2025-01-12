@@ -25,15 +25,15 @@ public class HouseRobber {
     public static int getMaxStolenValue(int[] hVal) {
         int n = hVal.length;
 
-        return recursion(hVal, n);
+        return recursion(0, hVal, n);
     }
 
-    public static int recursion(int[] haVal, int n) {
-        if (n<=0)
+    public static int recursion(int index, int[] haVal, int n) {
+        if (index >= n)
             return 0;
 
-        int sum1 = haVal[n-1] + recursion(haVal, n-2);
-        int sum2 = recursion(haVal, n-1);
+        int sum1 = haVal[index] + recursion(index+2, haVal, n);
+        int sum2 = recursion(index+1, haVal, n);
 
         return Math.max(sum1, sum2);
     }
@@ -43,18 +43,18 @@ public class HouseRobber {
 
         int[] dp= new int[n+1];
         Arrays.fill(dp, -1);
-        return recursionTopDown(hVal, n, dp);
+        return recursionTopDown(0, hVal, n, dp);
     }
 
-    public static int recursionTopDown(int[] haVal, int n, int[] dp) {
-        if (n<=0)
+    public static int recursionTopDown(int index, int[] haVal, int n, int[] dp) {
+        if (index>=n)
             return dp[n] = 0;
 
         if (dp[n] != -1)
             return dp[n];
 
-        int sum1 = haVal[n-1] + recursion(haVal, n-2);
-        int sum2 = recursion(haVal, n-1);
+        int sum1 = haVal[index] + recursion(index+2, haVal, n);
+        int sum2 = recursion(index+1, haVal, n);
 
         return dp[n] = Math.max(sum1, sum2);
     }

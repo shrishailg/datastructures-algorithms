@@ -37,4 +37,14 @@ public class MinRemoveToMakeValidParenthesis {
 
         return stringBuilder.toString();
     }
+
+    public static class Node {
+        int index;
+        char character;
+
+        public Node(int index, char character) {
+            this.index = index;
+            this.character = character;
+        }
+    }
 }

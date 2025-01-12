@@ -41,6 +41,7 @@ public class MajorityElement {
         return arr[firstOccurence] == x && arr[firstOccurence + n / 2] == x;
     }
 
+    //lower bound
     static int binerySearchFirstOccurence(int arr[], int low, int high, int target) {
         int res = -1;
 

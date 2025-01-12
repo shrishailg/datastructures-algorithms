@@ -19,8 +19,10 @@ public class MinCostPath {
     }
 
     public static int findMinCost(int[][] matrix, int m, int n) {
-        if (m < 0 || n < 0) return Integer.MAX_VALUE;
-        else if (m == 0 && n == 0) return matrix[m][n];
+        if (m < 0 || n < 0)
+            return Integer.MAX_VALUE;
+        else if (m == 0 && n == 0)
+            return matrix[m][n];
         else
             return matrix[m][n] + getMinValue(findMinCost(matrix, m - 1, n - 1), findMinCost(matrix, m - 1, n), findMinCost(matrix, m, n - 1));
     }

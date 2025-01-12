@@ -9,8 +9,9 @@ public class FindkClosest {
     // O(NlogN)
     public static List<Integer> findClosestElementsBruteForce(int[] nums, int k, int target) {
         List<List<Integer>> distances = new ArrayList<>();
-        List<Integer> list = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
 
+        //storing like <num, dist>
         for(var n:nums){
             List<Integer> list1 = new ArrayList<>();
             list1.add(n);
@@ -21,12 +22,12 @@ public class FindkClosest {
         distances.sort((a, b) -> a.get(1).equals(b.get(1)) ? a.get(0) - b.get(0) : a.get(1) - b.get(1));
 
         for(int i=0; i<k;i++){
-            list.add(distances.get(i).get(0));
+            result.add(distances.get(i).get(0));
         }
 
-        list.sort((a,b)-> a-b);
+        result.sort(Comparator.comparingInt(a -> a));
 
-        return list;
+        return result;
     }
 
     public static List<Integer> findClosestElements(int[] nums, int k, int target) {
@@ -58,30 +59,35 @@ public class FindkClosest {
         int windowLeft = firstClosest - 1;
         int windowRight = windowLeft + 1;
 
-        while ((windowRight - windowLeft - 1) < k) {
+        closestElements.add(nums[firstClosest]);
 
-            if (windowLeft == -1) {
-                windowRight++;
-                continue;
-            }
-
-            if (windowRight == nums.length || Math.abs(nums[windowLeft] - target) <= Math.abs(nums[windowRight] - target)) {
+        while (closestElements.size() < k && windowLeft>=0 && windowRight < nums.length) {
+            if (nums[windowLeft]< nums[windowRight]) {
+                closestElements.add(nums[windowLeft]);
                 windowLeft--;
             } else {
+                closestElements.add(nums[windowRight]);
                 windowRight++;
             }
         }
 
-        for (int i = windowLeft + 1; i < windowRight; i++) {
-            closestElements.add(nums[i]);
+        while (closestElements.size() < k && windowLeft >= 0) {
+                closestElements.add(nums[windowLeft]);
+                windowLeft--;
         }
+
+        while (closestElements.size() < k && windowRight < nums.length) {
+            closestElements.add(nums[windowRight]);
+            windowRight++;
+        }
+
         return closestElements;
     }
 
     public static int search(int[] nums, int target){
         int low = 0, high = nums.length;
 
-        while (low < high){
+        while (low <= high){
             int mid = low + ( high - low ) / 2;
             if (nums[mid] == target)
                 return nums[mid];
