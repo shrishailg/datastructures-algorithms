@@ -56,13 +56,13 @@ public class RemoveKDigits {
             i--;
         }
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         while (i >= 0) {
-            result += sb.charAt(i);
+            result.append(sb.charAt(i));
             i--;
         }
 
-        return result.isEmpty() ? "0" : result;
+        return (result.isEmpty()) ? "0" : result.toString();
     }
 }
