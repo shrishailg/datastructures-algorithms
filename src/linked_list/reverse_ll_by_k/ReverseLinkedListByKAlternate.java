@@ -15,6 +15,7 @@ public class ReverseLinkedListByKAlternate {
             count++;
         }
 
+        //this is very important
         if (head != null){
             head.next = current;
         }
