@@ -24,7 +24,7 @@ public class MinCostPath {
         else if (m == 0 && n == 0)
             return matrix[m][n];
         else
-            return matrix[m][n] + getMinValue(findMinCost(matrix, m - 1, n - 1), findMinCost(matrix, m - 1, n), findMinCost(matrix, m, n - 1));
+            return matrix[m][n] + Math.min(findMinCost(matrix, m - 1, n - 1), Math.min(findMinCost(matrix, m - 1, n), findMinCost(matrix, m, n - 1)));
     }
 
     private static int getMinValue(int x, int y, int z) {

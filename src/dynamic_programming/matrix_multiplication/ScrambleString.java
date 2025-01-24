@@ -28,8 +28,8 @@ public class ScrambleString {
         boolean flag = false;
 
         for(int k=1;k<=n-1;k++) {
-                boolean swap = isScramble(s1.substring(0, k), s2.substring(s2.length()-k, n))
-                    && isScramble(s1.substring(k, n), s2.substring(0, s1.length()- k));
+                boolean swap = isScramble(s1.substring(0, k), s2.substring(k, n))
+                    && isScramble(s1.substring(k, n), s2.substring(0, k));
 
             boolean not_swapped = isScramble(s1.substring(0, k), s2.substring(0, k))
                     && isScramble(s1.substring(k, n), s2.substring(k, n));
