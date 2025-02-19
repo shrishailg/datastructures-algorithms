@@ -7,7 +7,7 @@ public class RatMaze {
 
     static String direction = "DLRU";
 
-    static int[][] dr = { {1, 0, }, {0, -1 }, {-1,0}, {0,1}};
+    static int[][] dr = { {1, 0 }, {0, -1 }, {-1,0}, {0,1}};
 
     public static void main(String[] args) {
         int[][] maze = { { 1, 0, 0, 0 },
@@ -40,6 +40,7 @@ public class RatMaze {
 
         if (rowIndex == matrix.length -1 && colIndex == matrix[0].length-1){
             result.add(path.toString());
+            return;
         }
 
         matrix[rowIndex][colIndex] = 0;

@@ -26,11 +26,7 @@ public class PaintersPartition {
 
     private static int minimizeTime(int[] arr, int k) {
         int max = Arrays.stream(arr).max().getAsInt();
-        int sum = 0;
-
-        for(var val:arr) {
-            sum+=val;
-        }
+        int sum = Arrays.stream(arr).sum();
 
         int low = max;
         int high = sum;
