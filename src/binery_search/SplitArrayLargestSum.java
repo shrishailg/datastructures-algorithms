@@ -27,15 +27,7 @@ public class SplitArrayLargestSum {
 
     public static int splitArray(int[] nums, int k) {
         int maxNum = Arrays.stream(nums).max().getAsInt();
-        int sum = 0;
-
-        // if(k>nums.length) {
-        //     return -1;
-        // }
-
-        for(var num: nums) {
-            sum +=num;
-        }
+        int sum = Arrays.stream(nums).sum();
 
         int low = maxNum;
         int high = sum;

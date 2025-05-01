@@ -31,7 +31,7 @@ public class SplitWise {
             }
         }
 
-        minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> transactions[a]));
+        minHeap = new PriorityQueue<>((a,b)-> transactions[a]-transactions[b]);
         maxHeap = new PriorityQueue<>((a,b)-> transactions[b]-transactions[a]);
 
         for (int i=0;i<n;i++) {

@@ -23,9 +23,19 @@ public class PalindromeLinkedList {
 
     }
 
+
+    static{
+        System.out.println("Hello Shrishail");
+    }
+
     public static boolean isPalindrome(Node head) {
         Node slow = head;
         Node fast = head;
+
+        {
+            System.out.println("Hello Shrishail");
+        }
+
 
         while (slow != null && fast != null && fast.next != null) {
             slow = slow.next;

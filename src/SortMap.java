@@ -46,7 +46,7 @@ public class SortMap {
         });
 
         // Rebuild the map from the sorted list
-        HashMap<String, Integer> sortedMap = new LinkedHashMap<>();
+        Map<String, Integer> sortedMap = new LinkedHashMap<>();
         for (Map.Entry<String, Integer> entry : list) {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
