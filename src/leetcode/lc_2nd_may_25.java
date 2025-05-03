@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-public class lc_3rd_may_25 {
+public class lc_2nd_may_25 {
 
     public static void main(String[] args) {
         String dominoes = "RR.L";
